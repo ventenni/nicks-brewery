@@ -1,8 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 // redux
 import { useSelector, useDispatch } from 'react-redux';
-import { useGetBreweriesWithAutoCompleteQuery } from './../services/brewery';
 import { saveSearchQuery } from './../slices/brewerySlice';
 import SearchResults from './SearchResults';
 
@@ -10,7 +9,7 @@ const SearchInput = () => {
 	const searchQuery = useSelector((state) => state.brewery.searchQuery);
 	const dispatch = useDispatch();
 
-	function searchDebounced(func, timeout = 1000) {
+	function searchDebounced(func, timeout = 500) {
 		let timer;
 		return (...args) => {
 			clearTimeout(timer);
