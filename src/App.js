@@ -1,3 +1,8 @@
+import { useEffect } from 'react';
+
+// hooks
+import useCheckMobile from './hooks/useCheckMobile';
+
 // react-router
 import { Routes, Route, Link } from 'react-router-dom';
 
@@ -5,9 +10,23 @@ import { Routes, Route, Link } from 'react-router-dom';
 import BreweryDetails from './routes/BreweryDetails';
 import Home from './routes/Home';
 
-import { useGetBreweriesQuery } from './services/brewery';
+// redux
+import { useDispatch } from 'react-redux';
+import { setMobile } from './slices/brewerySlice';
 
 function App() {
+	const dispatch = useDispatch();
+	function HandleMobileChange() {
+		let mobile = useCheckMobile(768);
+		dispatch(setMobile({ isMobile: mobile }));
+	}
+
+	useEffect(() => {
+		HandleMobileChange();
+		window.addEventListener('resize', HandleMobileChange);
+
+		return () => window.removeEventListener('resize', HandleMobileChange);
+	});
 	return (
 		<div className="App">
 			<nav>

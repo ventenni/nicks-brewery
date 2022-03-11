@@ -1,8 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 // redux
 import { useSelector, useDispatch } from 'react-redux';
-import { useGetBreweriesWithAutoCompleteQuery } from './../services/brewery';
 import { saveSearchQuery } from './../slices/brewerySlice';
 import SearchResults from './SearchResults';
 
@@ -27,7 +26,7 @@ const SearchInput = () => {
 	);
 
 	return (
-		<div style={{ height: '500px' }}>
+		<div style={{ minHeight: '100px' }}>
 			<label>
 				Brewery Search
 				<input
