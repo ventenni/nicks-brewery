@@ -7,7 +7,8 @@ export const breweryApi = createApi({
 	baseQuery: fetchBaseQuery({ baseUrl: 'https://api.openbrewerydb.org/' }),
 	endpoints: (builder) => ({
 		getBreweries: builder.query({
-			query: () => `breweries/`,
+			query: ({ currentPage }) =>
+				`breweries?page=${currentPage}&per_page=15`,
 		}),
 		getBreweryById: builder.query({
 			query: (name) => `breweries/${name}`,
