@@ -9,7 +9,7 @@ const SearchInput = () => {
 	const searchQuery = useSelector((state) => state.brewery.searchQuery);
 	const dispatch = useDispatch();
 
-	function searchDebounced(func, timeout = 1000) {
+	function searchDebounced(func, timeout = 500) {
 		let timer;
 		return (...args) => {
 			clearTimeout(timer);

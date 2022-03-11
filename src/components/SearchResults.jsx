@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 import { Link } from 'react-router-dom';
 
@@ -13,19 +13,28 @@ const SearchResults = ({ searchQuery }) => {
 			searchQuery,
 		});
 
-	console.log({ data });
 	return (
 		<div>
-			{data?.length === 0 && ''}
+			{/* {data?.length === 0 && ''} */}
 			{isLoading && <h3>...Loading</h3>}
 			{isFetching && <h3>...Fetching</h3>}
 			{error && <h3>{error}</h3>}
 			{isSuccess && (
-				<datalist id="breweries">
+				<datalist
+					id="breweries"
+					onChange={() => console.log('datalist click')}
+				>
 					{data.map((item) => {
 						return (
 							<Link to="breweryDetails" key={item.id}>
-								<option value={item.name}>{item.name}</option>
+								<option
+									value={item.name}
+									onClick={() =>
+										console.log('clicked the option')
+									}
+								>
+									{item.name}
+								</option>
 							</Link>
 						);
 					})}
