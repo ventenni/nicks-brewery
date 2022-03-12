@@ -27,6 +27,7 @@ const Table = ({ data, error, isLoading, isFetching, isSuccess }) => {
 			return (
 				<TableRowMobile
 					key={brewery.id}
+					id={brewery.id}
 					name={brewery.name}
 					type={brewery.brewery_type}
 					city={brewery.city}
@@ -53,6 +54,7 @@ const Table = ({ data, error, isLoading, isFetching, isSuccess }) => {
 				{items.map((brewery) => (
 					<TableRow
 						key={brewery.id}
+						id={brewery.id}
 						name={brewery.name}
 						type={brewery.brewery_type}
 						city={brewery.city}

@@ -1,14 +1,16 @@
 import React from 'react';
 
-const TableRowMobile = ({ name, type, city, country, phone, url }) => {
-	const Tag = url?.length > 0 ? 'a' : 'div';
+// react router
+import { Link } from 'react-router-dom';
 
+const TableRowMobile = ({ id, name, type, city, country, phone, url }) => {
 	return (
 		<div>
-			<Tag href={url} target="_blank">
-				<h2>{name}</h2>
-			</Tag>
-
+			<div>
+				<Link to={`/breweryDetails/${id}`}>
+					<h2>{name}</h2>
+				</Link>
+			</div>
 			<p>{type}</p>
 
 			<div>
