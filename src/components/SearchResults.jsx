@@ -3,8 +3,6 @@ import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 // redux
-import { useSelector, useDispatch } from 'react-redux';
-import { saveSearchResults } from './../slices/brewerySlice';
 import { useGetBreweriesWithAutoCompleteQuery } from './../services/brewery';
 
 const SearchResults = ({ searchQuery }) => {
