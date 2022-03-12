@@ -26,7 +26,7 @@ const SearchInput = () => {
 	);
 
 	return (
-		<div style={{ minHeight: '100px' }}>
+		<div className="search-input" style={{ minHeight: '100px' }}>
 			<label>
 				Brewery Search
 				<input
