@@ -1,14 +1,20 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 // Components
 import TableRowMobile from './TableRow--Mobile';
 
 // redux
-import { nextPage, previousPage } from './../slices/brewerySlice';
+import {
+	nextPage,
+	previousPage,
+	setFilterVariables,
+} from './../slices/brewerySlice';
 import { useDispatch, useSelector } from 'react-redux';
 import TableRow from './TableRow';
 
 const Table = ({ data, error, isLoading, isFetching, isSuccess }) => {
+	const [cityFilter, setCityFilter] = useState('');
+	const [breweryNameFilter, setBreweryNameFilter] = useState('');
 	const dispatch = useDispatch();
 	const isMobile = useSelector((state) => state.brewery.isMobile);
 
@@ -83,6 +89,42 @@ const Table = ({ data, error, isLoading, isFetching, isSuccess }) => {
 		}
 	}
 
+	const getFilterInputs = () => {
+		return (
+			<div>
+				<label>
+					City
+					<input
+						type="text"
+						value={cityFilter}
+						onChange={(e) => setCityFilter(e.target.value)}
+						style={{ display: 'block' }}
+					/>
+				</label>
+
+				<label>
+					Brewery Name
+					<input
+						type="text"
+						value={breweryNameFilter}
+						onChange={(e) => setBreweryNameFilter(e.target.value)}
+						style={{ display: 'block' }}
+					/>
+				</label>
+
+				<button onClick={(e) => handleFilterButtonClick(e)}>Go!</button>
+			</div>
+		);
+	};
+
+	const handleFilterButtonClick = (e) => {
+		e.preventDefault();
+		const city = cityFilter.replace(' ', '_');
+		const brewery = breweryNameFilter.replace(' ', '_');
+
+		dispatch(setFilterVariables({ city, brewery }));
+	};
+
 	const items = breweriesFiltered();
 
 	return (
@@ -93,6 +135,7 @@ const Table = ({ data, error, isLoading, isFetching, isSuccess }) => {
 
 			{isSuccess && (
 				<>
+					{getFilterInputs()}
 					{isMobile && mobileView(items)}
 
 					{!isMobile && desktopView(items)}

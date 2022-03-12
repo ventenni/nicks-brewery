@@ -2,6 +2,8 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
 	currentPage: 1,
+	cityName: '',
+	breweryName: '',
 	isMobile: false,
 	searchQuery: '',
 	searchResults: [],
@@ -39,6 +41,10 @@ export const brewerySlice = createSlice({
 			console.log(action.payload.isMobile);
 			state.isMobile = action.payload.isMobile;
 		},
+		setFilterVariables: (state, action) => {
+			state.cityName = action.payload.city;
+			state.breweryName = action.payload.brewery;
+		},
 	},
 });
 
@@ -53,6 +59,7 @@ export const {
 	nextPage,
 	previousPage,
 	setMobile,
+	setFilterVariables,
 } = brewerySlice.actions;
 
 export default brewerySlice.reducer;
