@@ -1,0 +1,36 @@
+.container {
+	max-width: 1628px;
+	padding-bottom: 2rem;
+	padding-top: 2rem;
+
+	.row {
+		[class*='col-'] {
+			padding-top: 1rem;
+			padding-bottom: 1rem;
+		}
+	}
+
+	&.two-column {
+		.row {
+			justify-content: space-evenly;
+		}
+
+		&.big-small {
+			.row {
+				justify-content: space-evenly;
+			}
+		}
+	}
+
+	&.three-column {
+		.row {
+			justify-content: space-evenly;
+		}
+	}
+
+	&.four-column {
+		.row {
+			justify-content: space-evenly;
+		}
+	}
+}
