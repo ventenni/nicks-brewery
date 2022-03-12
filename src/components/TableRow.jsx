@@ -1,9 +1,14 @@
 import React from 'react';
 
-const TableRow = ({ name, type, city, country, url, phone }) => {
+// react router
+import { Link } from 'react-router-dom';
+
+const TableRow = ({ id, name, type, city, country, url, phone }) => {
 	return (
 		<tr>
-			<td>{name}</td>
+			<td>
+				<Link to={`/breweryDetails/${id}`}>{name}</Link>
+			</td>
 			<td>{type}</td>
 			<td>{city}</td>
 			<td>{country}</td>

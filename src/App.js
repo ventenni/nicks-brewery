@@ -36,7 +36,11 @@ function App() {
 
 			<Routes>
 				<Route path="/" element={<Home />} />
-				<Route path="breweryDetails" element={<BreweryDetails />} />
+				<Route
+					exact
+					path="breweryDetails/:breweryId"
+					element={<BreweryDetails />}
+				/>
 			</Routes>
 		</div>
 	);

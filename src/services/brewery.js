@@ -11,7 +11,7 @@ export const breweryApi = createApi({
 				`breweries?page=${currentPage}&per_page=15&by_city=${cityName}&by_name=${breweryName}`,
 		}),
 		getBreweryById: builder.query({
-			query: (name) => `breweries/${name}`,
+			query: ({ breweryId }) => `breweries/${breweryId}`,
 		}),
 		getBreweriesWithAutoComplete: builder.query({
 			query: ({ searchQuery }) =>
