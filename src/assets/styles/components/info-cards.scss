@@ -1,0 +1,37 @@
+.info-cards {
+	display: flex;
+	flex-wrap: wrap;
+	width: 100%;
+
+	> * {
+		flex: 0 0 100%;
+		max-width: 100%;
+		padding-right: 1rem;
+		padding-left: 1rem;
+
+		@include max-screen($max-breakpoint-md) {
+			margin-bottom: 1.5rem;
+		}
+
+		.card {
+			padding: 2rem;
+			outline: 1px solid $cl__black;
+			border-radius: 10px;
+
+			svg {
+				width: 10rem;
+				height: auto;
+			}
+		}
+
+		@include min-screen($min-breakpoint-md) {
+			flex: 0 0 50%;
+			max-width: 50%;
+		}
+
+		@include min-screen($min-breakpoint-lg) {
+			flex-basis: 33.33%;
+			max-width: 33.33%;
+		}
+	}
+}

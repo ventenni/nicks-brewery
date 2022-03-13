@@ -1,0 +1,158 @@
+$cl__neon: rgba(255, 20, 189, 1);
+$cl__clr-bg: rgba(101, 31, 104, 1);
+$cl__white: #ffffff;
+$cl__yellow: #ffff00;
+$cl__yellow--light: #f0f000;
+$cl__blue: #8eacbf;
+$cl__blue--light: #a4bece;
+
+.button {
+	display: inline-block;
+	padding: 0.75em 1.5em;
+	color: black;
+	cursor: pointer;
+	border-radius: 0.25em;
+	text-decoration: none;
+	font-weight: bold;
+
+	&:hover {
+		color: #000000;
+		text-decoration: none;
+		outline-offset: 4px;
+	}
+
+	&.btn-rounded {
+		border-radius: 2em;
+	}
+
+	&.btn-basic {
+		background: $cl__blue;
+		transition: all linear 150ms;
+
+		&:hover,
+		&:focus,
+		&:active {
+			background: $cl__blue--light;
+		}
+	}
+
+	&.btn-basic--outline {
+		color: $cl__blue;
+		outline: 2px solid rgba($cl__blue, 0.7);
+		outline-offset: 0;
+		transition: outline-offset 200ms ease;
+
+		&:hover,
+		&:focus,
+		&:active {
+			color: $cl__blue;
+			outline-offset: 2px;
+		}
+	}
+
+	&.btn--gradient {
+		background-image: linear-gradient(
+			128deg,
+			rgb(117, 34, 153 / 1) 0%,
+			rgb(210, 164, 230 / 1) 20%,
+			rgb(142, 182, 230 / 1) 40%,
+			rgb(118, 153, 3 / 1) 60%,
+			rgb(203, 230, 115 / 1) 80%
+		);
+		background-size: 300%;
+		background-position-x: left;
+		transition: background-position-x 0.3s ease;
+
+		&:hover &:focus,
+		&:active {
+			background-position-x: right;
+		}
+	}
+
+	&.btn-shadow {
+		background-color: $cl__blue;
+		box-shadow: 0px 0px 18px 5px #000000;
+		transition: box-shadow 200ms ease;
+
+		&:hover,
+		&:focus,
+		&:active {
+			color: black;
+			box-shadow: 0px 0px 10px 3px #000000;
+		}
+	}
+
+	&.btn-neumorphism {
+		border-radius: 50px;
+		background-image: linear-gradient(145deg, #cacaca, #f0f0f0);
+		background-position-x: left;
+		box-shadow: 25px 25px 22px #989898, -25px -25px 22px #ffffff;
+		background-size: 300%;
+		transition: background-position 0.2s ease, box-shadow 0.2s ease;
+
+		&:hover &:focus,
+		&:active {
+			border-radius: 50px;
+			background-image: linear-gradient(145deg, #cacaca, #f0f0f0);
+			background-position-x: right;
+			box-shadow: 5px 5px 20px #989898, -40px -10px 20px;
+		}
+	}
+
+	&.btn-neon {
+		position: relative;
+		color: $cl__neon;
+		border: $cl__neon 4px solid;
+		box-shadow: 0 0 0.5em $cl__neon, inset 0 0 0.5em $cl__neon;
+		text-shadow: 0 0 0.125em rgba($cl__white, 0.1), 0 0 1em currentColor;
+
+		// transition: background-color 100ms linear;
+
+		&.btn-rounded::after {
+			border-radius: 2em;
+		}
+
+		&::before {
+			content: '';
+			position: absolute;
+			top: 120%;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background: $cl__neon;
+			pointer-events: none;
+			transform: perspective(1em) rotateX(40deg) scale(1, 0.35);
+			filter: blur(1.5em);
+			opacity: 0.7;
+			transition: opacity 100ms linear;
+		}
+
+		&::after {
+			content: '';
+			position: absolute;
+			top: 0;
+			right: 0;
+			bottom: 0;
+			left: 0;
+			box-shadow: 0 0 2em 0.5em $cl__neon;
+			background-color: $cl__neon;
+			opacity: 0;
+			transition: opacity 100ms linear;
+			z-index: -1;
+		}
+
+		&:hover,
+		&:focus {
+			color: $cl__white;
+			text-shadow: none;
+
+			&::before {
+				opacity: 1;
+			}
+
+			&::after {
+				opacity: 1;
+			}
+		}
+	}
+}

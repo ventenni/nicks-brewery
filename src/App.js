@@ -13,6 +13,7 @@ import Home from './routes/Home';
 // redux
 import { useDispatch } from 'react-redux';
 import { setMobile } from './slices/brewerySlice';
+import Footer from './components/Footer';
 
 function App() {
 	const dispatch = useDispatch();
@@ -31,7 +32,6 @@ function App() {
 		<div className="App">
 			<nav>
 				<Link to="/">Home</Link>
-				<Link to="/breweryDetails">Brewery Details</Link>
 			</nav>
 
 			<Routes>
@@ -42,6 +42,10 @@ function App() {
 					element={<BreweryDetails />}
 				/>
 			</Routes>
+
+			<Footer>
+				<a href="www.github.com">Github</a>
+			</Footer>
 		</div>
 	);
 }

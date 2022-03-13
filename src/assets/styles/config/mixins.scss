@@ -1,0 +1,27 @@
+// Grid Breakpoints (based on Bootstrap 4 grid) //
+
+// Max Container Widths for each breakpoint //
+
+/// Default maximum container widths at each breakpoint
+/// @type Array
+$container-widths: (
+	xs: 100%,
+	sm: 540px,
+	md: 720px,
+	lg: 960px,
+	xl: 1185px,
+	xxl: 1455px,
+	xxxl: 1628px,
+) !default;
+
+@mixin min-screen($value) {
+	@media (min-width: $value) {
+		@content;
+	}
+}
+
+@mixin max-screen($value) {
+	@media (max-width: $value) {
+		@content;
+	}
+}

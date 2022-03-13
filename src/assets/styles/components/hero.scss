@@ -1,0 +1,40 @@
+.hero-image {
+	position: relative;
+	height: 500px;
+	min-height: 320px;
+	margin: 0 -15px;
+
+	&__background {
+		position: absolute;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+		background-repeat: no-repeat;
+		background-size: cover;
+		background-position: center;
+
+		&::after {
+			display: block;
+			position: absolute;
+			top: 0;
+			right: 0;
+			bottom: 0;
+			left: 0;
+			background: linear-gradient(
+				45deg,
+				rgba(#000000, 0.4),
+				transparent 50%
+			);
+			content: '';
+		}
+	}
+
+	&__content {
+		position: absolute;
+		bottom: 3rem;
+		left: 3rem;
+		color: #ffffff;
+		z-index: 44;
+	}
+}
