@@ -1,7 +1,4 @@
-import React, { useEffect } from 'react';
-
-// react router
-import { Link } from 'react-router-dom';
+import React from 'react';
 
 // components
 import SearchResultItem from './SearchResults--Item';

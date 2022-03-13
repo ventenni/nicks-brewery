@@ -2,6 +2,7 @@ import React from 'react';
 
 // components
 import SearchInput from './../components/SearchInput';
+import Section from './../layout/Section';
 import Table from './../components/Table';
 
 // redux
@@ -21,11 +22,11 @@ const Home = () => {
 		<div>
 			<h1>Home</h1>
 
-			<section>
+			<Section>
 				<SearchInput />
-			</section>
+			</Section>
 
-			<section>
+			<Section>
 				<Table
 					data={data}
 					error={error}
@@ -33,7 +34,7 @@ const Home = () => {
 					isLoading={isLoading}
 					isSuccess={isSuccess}
 				/>
-			</section>
+			</Section>
 		</div>
 	);
 };

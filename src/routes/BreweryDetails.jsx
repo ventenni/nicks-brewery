@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 
 // react router
 import { useParams } from 'react-router-dom';
@@ -6,11 +6,12 @@ import { useParams } from 'react-router-dom';
 // Components
 import Button from '../components/Button';
 import Hero from './../components/Hero';
-import Location from '../components/Location';
 import Section from './../layout/Section';
 
 // redux
 import { useGetBreweryByIdQuery } from '../services/brewery';
+import InfoCards from '../components/InfoCards';
+import Iframe from '../components/Iframe';
 
 const BreweryDetails = () => {
 	const { breweryId } = useParams();
@@ -18,18 +19,10 @@ const BreweryDetails = () => {
 	const { data, error, isLoading, isFetching, isSuccess } =
 		useGetBreweryByIdQuery({ breweryId });
 
+	const iframeUrl = `https://www.google.com/maps/embed/v1/place?key=${process.env.REACT_APP_GOOGLE_MAP_API}&q=${data?.latitude},${data?.longitude}`;
+
 	return (
 		<>
-			{data?.name}
-			{breweryId}
-			<h1>Brewery Details</h1>
-
-			{data?.brewery_type}
-			{data?.phone}
-			{data?.website_url}
-			{data?.updated_at}
-			{data?.created_at}
-
 			{isFetching && <h2>...Fetching</h2>}
 			{isLoading && <h2>...Loading</h2>}
 			{error && <h2>Something went wrong...</h2>}
@@ -43,7 +36,7 @@ const BreweryDetails = () => {
 					/>
 
 					<Section>
-						<Location
+						<InfoCards
 							street={data?.street}
 							address2={data?.address_2}
 							address3={data?.address_3}
@@ -52,9 +45,13 @@ const BreweryDetails = () => {
 							postcode={data?.postal_code}
 							country={data?.country}
 							province={data?.county_province}
-							longitude={data?.longitude}
-							latitude={data?.latitude}
+							phone={data?.phone}
+							type={data?.brewery_type}
 						/>
+					</Section>
+
+					<Section>
+						<Iframe iframeUrl={iframeUrl} />
 					</Section>
 
 					<Section>
