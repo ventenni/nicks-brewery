@@ -23,10 +23,6 @@ const Home = () => {
 			<h1>Home</h1>
 
 			<Section>
-				<SearchInput />
-			</Section>
-
-			<Section>
 				<Table
 					data={data}
 					error={error}

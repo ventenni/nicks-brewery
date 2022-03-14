@@ -1,0 +1,29 @@
+.navbar {
+	display: flex;
+	justify-content: space-between;
+	padding: 1rem 3rem;
+	border-bottom: 1px solid rgba($cl__black, 0.5);
+
+	&__links {
+		.navbar-brand {
+			color: $cl__black;
+			font-size: 4rem;
+			text-decoration: none;
+		}
+	}
+
+	&__search {
+		display: grid;
+		place-items: center;
+		width: 5rem;
+		height: 5rem;
+
+		&__button {
+			width: 4rem;
+
+			svg {
+				max-width: 4rem;
+			}
+		}
+	}
+}

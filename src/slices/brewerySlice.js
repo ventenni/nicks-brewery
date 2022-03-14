@@ -5,6 +5,7 @@ const initialState = {
 	cityName: '',
 	breweryName: '',
 	isMobile: false,
+	searchOpen: false,
 	searchQuery: '',
 	searchResults: [],
 };
@@ -34,16 +35,19 @@ export const brewerySlice = createSlice({
 				`state: ${state.searchQuery}, payload: ${action.payload.searchQuery}`
 			);
 		},
+
 		saveBreweriesFromSearchResults: (state, action) => {
 			state.searchResults = action.payload.searchResults;
 		},
+
 		setMobile: (state, action) => {
 			console.log(action.payload.isMobile);
 			state.isMobile = action.payload.isMobile;
 		},
-		setFilterVariables: (state, action) => {
-			state.cityName = action.payload.city;
-			state.breweryName = action.payload.brewery;
+
+		setSearchOpen: (state, action) => {
+			console.log('setsearch open');
+			state.searchOpen = action.payload.searchOpen;
 		},
 	},
 });
@@ -60,6 +64,7 @@ export const {
 	previousPage,
 	setMobile,
 	setFilterVariables,
+	setSearchOpen,
 } = brewerySlice.actions;
 
 export default brewerySlice.reducer;

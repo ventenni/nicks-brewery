@@ -1,13 +1,30 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 // redux
 import { useSelector, useDispatch } from 'react-redux';
-import { saveSearchQuery } from './../slices/brewerySlice';
+import { saveSearchQuery, setSearchOpen } from './../slices/brewerySlice';
 import SearchResults from './SearchResults';
 
 const SearchInput = () => {
-	const searchQuery = useSelector((state) => state.brewery.searchQuery);
+	const [searchStatus, setSearchStatus] = useState('closed');
+	const searchOpen = useSelector((state) => state.brewery.searchOpen);
 	const dispatch = useDispatch();
+
+	useEffect(() => {
+		if (searchOpen) {
+			setTimeout(() => {
+				setSearchStatus('open');
+			}, 450);
+			setSearchStatus('opening');
+		} else {
+			setTimeout(() => {
+				setSearchStatus('closed');
+			}, 450);
+			setSearchStatus('closing');
+		}
+	}, [searchOpen]);
+
+	const searchQuery = useSelector((state) => state.brewery.searchQuery);
 
 	function searchDebounced(func, timeout = 500) {
 		let timer;
@@ -24,25 +41,34 @@ const SearchInput = () => {
 	const processSearch = searchDebounced((value) =>
 		dispatch(saveSearchQuery({ searchQuery: value }))
 	);
-
 	return (
-		<div className="search">
-			<label>
-				Brewery Search
-				<input
-					autoComplete="on"
-					type="text"
-					list="breweries"
-					onKeyUp={(e) => {
-						processSearch(e.target.value);
-					}}
-					style={{ display: 'block' }}
-				/>
-			</label>
+		<div className={`search search--${searchStatus}`}>
+			<div className="search__nav">
+				<div>
+					<a href="#" onClick={() => dispatch(setSearchOpen(false))}>
+						<div className="close" />
+					</a>
+				</div>
+			</div>
 
-			{searchQuery.length > 0 && (
-				<SearchResults searchQuery={searchQuery} />
-			)}
+			<div className="search__container">
+				<label>
+					Brewery Search
+					<input
+						autoComplete="on"
+						type="text"
+						list="breweries"
+						onKeyUp={(e) => {
+							processSearch(e.target.value);
+						}}
+						style={{ display: 'block' }}
+					/>
+				</label>
+
+				{searchQuery.length > 0 && (
+					<SearchResults searchQuery={searchQuery} />
+				)}
+			</div>
 		</div>
 	);
 };
