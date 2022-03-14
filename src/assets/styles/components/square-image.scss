@@ -1,0 +1,83 @@
+.square-images {
+	display: flex;
+	flex-wrap: wrap;
+	width: 100%;
+
+	> * {
+		flex: 0 0 100%;
+		max-width: 100%;
+		padding-right: 1rem;
+		padding-left: 1rem;
+
+		@include max-screen($max-breakpoint-md) {
+			margin-bottom: 1.5rem;
+		}
+
+		@include min-screen($min-breakpoint-md) {
+			flex: 0 0 50%;
+			max-width: 50%;
+		}
+
+		@include min-screen($min-breakpoint-lg) {
+			flex-basis: 33.33%;
+			max-width: 33.33%;
+		}
+	}
+}
+
+.square-image {
+	position: relative;
+	padding-bottom: 100%;
+	overflow: hidden;
+	cursor: pointer;
+
+	.square-image__image {
+		position: absolute;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+		height: 100%;
+		background-size: cover;
+		background-attachment: fixed;
+	}
+
+	.square-image__title {
+		position: absolute;
+		right: 4.5rem;
+		bottom: 1rem;
+		left: 2rem;
+		text-align: left;
+		color: #ffffff;
+		font-weight: bold;
+		text-transform: uppercase;
+		transition: 0.3s;
+		z-index: 3;
+	}
+
+	.square-image__subtitle {
+		position: absolute;
+		right: 4.5rem;
+		bottom: 1rem;
+		left: 2rem;
+		text-align: left;
+		color: #ffffff;
+		font-weight: bold;
+		font-style: italic;
+		font-size: 1rem;
+		text-transform: uppercase;
+		opacity: 0;
+		transition: 0.4s;
+		z-index: 3;
+	}
+
+	&:hover {
+		.square-image__title {
+			bottom: 3rem;
+		}
+
+		.square-image__subtitle {
+			opacity: 1;
+		}
+	}
+}

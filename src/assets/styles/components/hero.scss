@@ -12,7 +12,7 @@
 		left: 0;
 		background-repeat: no-repeat;
 		background-size: cover;
-		background-position: center;
+		background-position: left center;
 
 		&::after {
 			display: block;
@@ -23,7 +23,7 @@
 			left: 0;
 			background: linear-gradient(
 				45deg,
-				rgba(#000000, 0.4),
+				rgba($cl__black, 0.5),
 				transparent 50%
 			);
 			content: '';
@@ -32,9 +32,18 @@
 
 	&__content {
 		position: absolute;
+		right: 0;
 		bottom: 3rem;
-		left: 3rem;
+		left: 0;
 		color: #ffffff;
 		z-index: 44;
+
+		&__container {
+			width: 100%;
+			padding: 0 3rem;
+			@include min-screen($min-breakpoint-lg) {
+				width: 66.66%;
+			}
+		}
 	}
 }

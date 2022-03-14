@@ -9,7 +9,9 @@ const Hero = ({ image, heading }) => {
 			></div>
 			{heading && (
 				<div className="hero-image__content">
-					<h2 className="hero-heading">{heading}</h2>
+					<div className="hero-image__content__container">
+						<h1 className="hero-heading">{heading}</h1>
+					</div>
 				</div>
 			)}
 		</div>

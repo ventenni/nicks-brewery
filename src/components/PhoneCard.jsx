@@ -1,16 +1,17 @@
 import { ReactComponent as PhoneIcon } from './../assets/icons/phone.svg';
+import Button from './Button';
 
 const PhoneCard = ({ phone }) => {
 	return (
-		<div className=" card">
-			<div>
+		<div className="card">
+			<div className="card__body">
+				<h3>Contact</h3>
 				<PhoneIcon />
 			</div>
-			<h3>
-				Contact the brewery on:
-				<br />
-				<a href={`tel:${phone}`}>{phone}</a>
-			</h3>
+
+			<Button url={`tel:${phone}`} className="btn-basic--outline">
+				{phone}
+			</Button>
 		</div>
 	);
 };

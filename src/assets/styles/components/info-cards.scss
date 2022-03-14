@@ -14,12 +14,25 @@
 		}
 
 		.card {
-			padding: 2rem;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			padding: 4rem;
+			height: 100%;
 			outline: 1px solid $cl__black;
 			border-radius: 10px;
 
+			&__body {
+				margin: 0 auto 2.5rem;
+			}
+
+			h3 {
+				margin-top: 0;
+				text-transform: capitalize;
+			}
+
 			svg {
-				width: 10rem;
+				width: 12rem;
 				height: auto;
 			}
 		}

@@ -1,13 +1,23 @@
 import { ReactComponent as BeerIcon } from './../assets/icons/beer.svg';
+import Button from './Button';
 
-const TypeCard = ({ type }) => {
+const TypeCard = ({ type, url }) => {
 	return (
-		<div className=" card">
-			<div>
+		<div className="type-card card">
+			<div className="card__body">
+				<h3>{`${type} Brewery`}</h3>
 				<BeerIcon />
 			</div>
 
-			<h3>{`${type} Brewery`}</h3>
+			{url && (
+				<Button
+					className={'btn-basic--outline'}
+					url={url}
+					target="_blank"
+				>
+					Visit Website
+				</Button>
+			)}
 		</div>
 	);
 };

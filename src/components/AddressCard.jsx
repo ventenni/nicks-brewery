@@ -12,16 +12,13 @@ const AddressCard = ({
 }) => {
 	return (
 		<div className="address-card card">
-			<div>
+			<div className="card__body">
+				<h3>Address</h3>
 				<AddressIcon />
 			</div>
 			<div>
-				<h3>{street}</h3>
-				{address2 && <p>{address2}</p>}
-				{address3 && <p>{address3}</p>}
-				<p>{`${city} ${state}`}</p>
+				<h4>{`${street}, ${city} ${state}`}</h4>
 				<p>
-					{' '}
 					{province && `${province} `} {`${postcode}`}
 				</p>
 				<p>{`${country}`}</p>

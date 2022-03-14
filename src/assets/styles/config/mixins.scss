@@ -25,3 +25,36 @@ $container-widths: (
 		@content;
 	}
 }
+
+/// Font Styling Mixin.
+/// Can pass in font-size, font-weight, line-height, letter-spacing,
+/// or include without params to use default values.
+/// @param {length} $size [$rem-base] - The value for `font-size` (will be converted to EMs)
+/// @param {length} $lheight [null] - The value for `line-height` (will be converted to EMs)
+/// @param {integer} $weight [null] - The value for `font-weight` (e.g. 300, 400, etc)
+/// @param {length} $lspacing [null] - The value for `letter-spacing` (no conversion)
+/// @requires {variable} $rem-base - The default value for `font-size`
+@mixin font(
+	$size: $rem-base,
+	$lheight: null,
+	$weight: null,
+	$lspacing: null,
+	$em-base: $font-size
+) {
+	@if $size != null {
+		font-size: em($size, $em-base);
+	}
+	@if $weight != null {
+		font-weight: $weight;
+	}
+	@if $lheight != null {
+		line-height: em($lheight, $size);
+	}
+	@if $lspacing != null {
+		letter-spacing: $lspacing;
+	}
+}
+
+@function em($value1, $value2) {
+	@return #{$value1/$value2}em;
+}
