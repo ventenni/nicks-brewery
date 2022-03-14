@@ -20,34 +20,34 @@ iframe {
 	// margin-right: -15px;
 	margin-bottom: 0;
 	// margin-left: -15px;
-	padding: 1rem 0;
+	padding: 4rem 0;
 	background-repeat: no-repeat;
 	background-position: center center;
 	background-size: cover;
 	text-align: center;
 
 	&:first-of-type {
-		padding-top: rem(50px);
+		padding-top: 5rem;
 	}
 
 	&:last-of-type {
-		padding-bottom: rem(50px);
+		padding-bottom: 5rem;
 	}
 
 	@include min-screen($max-breakpoint-lg) {
-		padding: 1rem 4rem;
+		padding: 3rem;
 
 		&:first-of-type {
-			padding-top: rem(116px);
+			padding-top: 11rem;
 		}
 
 		&:last-of-type {
-			padding-bottom: rem(116px);
+			padding-bottom: 11rem;
 		}
 
 		&__heading,
 		&__subheading {
-			margin-bottom: rem(50px);
+			margin-bottom: 5rem;
 		}
 	}
 
