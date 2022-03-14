@@ -13,7 +13,10 @@ import Home from './routes/Home';
 // redux
 import { useDispatch } from 'react-redux';
 import { setMobile } from './slices/brewerySlice';
+
+// Components
 import Footer from './components/Footer';
+import Nav from './components/Nav';
 
 function App() {
 	const dispatch = useDispatch();
@@ -30,10 +33,7 @@ function App() {
 	});
 	return (
 		<div className="App">
-			<nav>
-				<Link to="/">Home</Link>
-			</nav>
-
+			<Nav />
 			<Routes>
 				<Route path="/" element={<Home />} />
 				<Route
