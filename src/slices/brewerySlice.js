@@ -49,6 +49,10 @@ export const brewerySlice = createSlice({
 			console.log('setsearch open');
 			state.searchOpen = action.payload.searchOpen;
 		},
+		setFilterVariables: (state, action) => {
+			state.cityName = action.payload.city;
+			state.breweryName = action.payload.brewery;
+		},
 	},
 });
 
