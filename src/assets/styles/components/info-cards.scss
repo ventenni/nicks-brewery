@@ -9,7 +9,7 @@
 		padding-right: 1rem;
 		padding-left: 1rem;
 
-		@include max-screen($max-breakpoint-md) {
+		@include max-screen($max-breakpoint-lg) {
 			margin-bottom: 1.5rem;
 		}
 
@@ -17,6 +17,7 @@
 			display: flex;
 			flex-direction: column;
 			align-items: center;
+			justify-content: space-between;
 			padding: 4rem;
 			height: 100%;
 			outline: 1px solid $cl__black;
@@ -34,6 +35,16 @@
 			svg {
 				width: 12rem;
 				height: auto;
+			}
+
+			.address {
+				p:last-child {
+					margin: 0;
+				}
+
+				&__street {
+					font-weight: bold;
+				}
 			}
 		}
 

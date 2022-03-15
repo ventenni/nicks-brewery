@@ -8,12 +8,12 @@ input {
 	padding: 0.75rem;
 	font-size: 1.25em;
 
-	@include max-screen($max-breakpoint-lg) {
+	@include max-screen($max-breakpoint-xl) {
 		display: block;
 	}
 
-	@include min-screen($min-breakpoint-lg) {
-		max-width: 20rem;
+	@include min-screen($min-breakpoint-xl) {
+		max-width: 35rem;
 		margin: 0 0 0 1rem;
 	}
 }

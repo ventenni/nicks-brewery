@@ -5,6 +5,9 @@ import { useSelector, useDispatch } from 'react-redux';
 import { saveSearchQuery, setSearchOpen } from './../slices/brewerySlice';
 import SearchResults from './SearchResults';
 
+// Initially I was going to use a datalist for the search results
+// Due to a bug on Firefox I opted to return the results below the
+// input as separate components.
 const SearchInput = () => {
 	const [searchStatus, setSearchStatus] = useState('closed');
 	const searchOpen = useSelector((state) => state.brewery.searchOpen);
@@ -44,11 +47,9 @@ const SearchInput = () => {
 	return (
 		<div className={`search search--${searchStatus}`}>
 			<div className="search__nav">
-				<div>
-					<a href="#" onClick={() => dispatch(setSearchOpen(false))}>
-						<div className="close" />
-					</a>
-				</div>
+				<a href="#" onClick={() => dispatch(setSearchOpen(false))}>
+					<div className="close" />
+				</a>
 			</div>
 
 			<div className="search__container">
@@ -61,7 +62,6 @@ const SearchInput = () => {
 						onKeyUp={(e) => {
 							processSearch(e.target.value);
 						}}
-						style={{ display: 'block' }}
 					/>
 				</label>
 

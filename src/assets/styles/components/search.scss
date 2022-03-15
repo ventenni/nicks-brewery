@@ -85,13 +85,14 @@
 
 		.close {
 			position: relative;
-			width: 3rem;
-			height: 3em;
+			display: inline-block;
+			width: 4rem;
+			height: 4em;
 
 			&:after,
 			&:before {
 				position: absolute;
-				width: 100%;
+				width: 75%;
 				height: 2px;
 				background: $cl__black;
 				content: '';
@@ -108,6 +109,10 @@
 	}
 
 	&__container {
+		input {
+			margin-top: 3rem;
+		}
+
 		.search-results {
 			width: 100%;
 			margin-top: 2rem;
@@ -115,7 +120,7 @@
 
 			@include min-screen($min-breakpoint-lg) {
 				width: 70%;
-				margin: 0 auto;
+				margin: 2rem auto;
 			}
 
 			.search-result-item {
