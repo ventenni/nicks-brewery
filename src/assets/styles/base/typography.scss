@@ -6,6 +6,20 @@ body {
 	font-size: 1.6rem;
 }
 
+h1,
+h2,
+h3,
+h4,
+h5 {
+	color: $cl__header-text;
+	font-family: 'Fredoka', sans-serif;
+}
+
+a {
+	text-decoration: none;
+	color: $tenne-tawny;
+}
+
 h1 {
 	// font-size: clamp(3rem, 3rem + 1vw, 7rem);
 	// font-size: clamp(2rem, 1rem + 8.333vw, 5.5rem);

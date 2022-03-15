@@ -13,7 +13,7 @@ const TableRow = ({ id, name, type, city, country, url, phone }) => {
 			<td>{city}</td>
 			<td>{country}</td>
 			<td>
-				<a href={url}>{url}</a>
+				<a href={url}>{url || '-'}</a>
 			</td>
 			<td>
 				<a href={`tel:${phone}`}>{phone}</a>

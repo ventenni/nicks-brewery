@@ -9,9 +9,11 @@ const PhoneCard = ({ phone }) => {
 				<PhoneIcon />
 			</div>
 
-			<Button url={`tel:${phone}`} className="btn-basic--outline">
-				{phone}
-			</Button>
+			{phone && (
+				<Button url={`tel:${phone}`} className="btn-basic--outline">
+					{phone}
+				</Button>
+			)}
 		</div>
 	);
 };
