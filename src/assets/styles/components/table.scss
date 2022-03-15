@@ -13,7 +13,7 @@
 	&__filter-inputs {
 		padding: 3rem 0;
 
-		@include min-screen($min-breakpoint-lg) {
+		@include min-screen($min-breakpoint-xl) {
 			display: flex;
 			align-items: center;
 			justify-content: space-evenly;
@@ -37,7 +37,7 @@
 
 		thead {
 			th {
-				padding: 0.75rem 2rem 0.75rem 0;
+				padding: 0.75rem 2rem 0.75rem 1rem;
 				font-size: 1.25em;
 				text-align: left;
 			}
@@ -51,7 +51,7 @@
 			}
 
 			td {
-				padding: 0.75rem 2rem 0.75rem 0;
+				padding: 0.75rem 2rem 0.75rem 1rem;
 				font-size: 1.25em;
 				text-align: left;
 				text-transform: capitalize;
