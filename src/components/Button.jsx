@@ -1,5 +1,3 @@
-import React from 'react';
-
 const Button = ({
 	children,
 	rounded = false,
@@ -7,6 +5,7 @@ const Button = ({
 	click = null,
 	url,
 	target,
+	disabled = false,
 }) => {
 	const roundedEdges = rounded ? 'btn-rounded' : '';
 
@@ -16,11 +15,13 @@ const Button = ({
 		}
 	};
 
+	const isDisabled = disabled ? 'disabled' : '';
+
 	return (
 		<a
 			href={url}
-			className={`button ${className} ${roundedEdges}`}
-			onClick={() => onClickAction()}
+			className={`button ${className} ${roundedEdges} ${isDisabled}`}
+			onClick={(e) => onClickAction(e)}
 			target={target}
 		>
 			{children}

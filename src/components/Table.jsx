@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 
 // Components
+import Button from './Button';
 import TableRowMobile from './TableRow--Mobile';
 
 // redux
@@ -17,16 +18,7 @@ const Table = ({ data, error, isLoading, isFetching, isSuccess }) => {
 	const [breweryNameFilter, setBreweryNameFilter] = useState('');
 	const dispatch = useDispatch();
 	const isMobile = useSelector((state) => state.brewery.isMobile);
-
-	function breweriesFiltered() {
-		let breweries = [];
-
-		if (data) {
-			breweries = data;
-		}
-
-		return breweries;
-	}
+	const currentPage = useSelector((state) => state.brewery.currentPage);
 
 	const mobileView = (items) => {
 		return items.map((brewery) => {
@@ -47,35 +39,37 @@ const Table = ({ data, error, isLoading, isFetching, isSuccess }) => {
 
 	const desktopView = (items) => {
 		return (
-			<table>
-				<tr>
-					<th>Name</th>
-					<th>Type</th>
-					<th>City</th>
-					<th>Country</th>
-					<th>Url</th>
-					<th>Phone</th>
-				</tr>
+			<table className="desktop-table">
+				<thead>
+					<tr>
+						<th>Name</th>
+						<th>Type</th>
+						<th>City</th>
+						<th>Country</th>
+						<th>Url</th>
+						<th>Phone</th>
+					</tr>
+				</thead>
 
-				{items.map((brewery) => (
-					<TableRow
-						key={brewery.id}
-						id={brewery.id}
-						name={brewery.name}
-						type={brewery.brewery_type}
-						city={brewery.city}
-						country={brewery.country}
-						phone={brewery.phone}
-						url={brewery.website_url}
-					/>
-				))}
+				<tbody>
+					{items.map((brewery) => (
+						<TableRow
+							key={brewery.id}
+							id={brewery.id}
+							name={brewery.name}
+							type={brewery.brewery_type}
+							city={brewery.city}
+							country={brewery.country}
+							phone={brewery.phone}
+							url={brewery.website_url}
+						/>
+					))}
+				</tbody>
 			</table>
 		);
 	};
 
-	function handleButtonClick(type, e) {
-		e.preventDefault();
-
+	function handleButtonClick(type) {
 		switch (type) {
 			case 'next':
 				dispatch(nextPage());
@@ -91,14 +85,13 @@ const Table = ({ data, error, isLoading, isFetching, isSuccess }) => {
 
 	const getFilterInputs = () => {
 		return (
-			<div>
+			<div className="table__filter-inputs">
 				<label>
 					City
 					<input
 						type="text"
 						value={cityFilter}
 						onChange={(e) => setCityFilter(e.target.value)}
-						style={{ display: 'block' }}
 					/>
 				</label>
 
@@ -108,27 +101,29 @@ const Table = ({ data, error, isLoading, isFetching, isSuccess }) => {
 						type="text"
 						value={breweryNameFilter}
 						onChange={(e) => setBreweryNameFilter(e.target.value)}
-						style={{ display: 'block' }}
 					/>
 				</label>
 
-				<button onClick={(e) => handleFilterButtonClick(e)}>Go!</button>
+				<Button
+					url="#table"
+					click={() => handleFilterButtonClick()}
+					className="btn-basic"
+				>
+					Go!
+				</Button>
 			</div>
 		);
 	};
 
-	const handleFilterButtonClick = (e) => {
-		e.preventDefault();
+	const handleFilterButtonClick = () => {
 		const city = cityFilter.replace(' ', '_');
 		const brewery = breweryNameFilter.replace(' ', '_');
 
 		dispatch(setFilterVariables({ city, brewery }));
 	};
 
-	const items = breweriesFiltered();
-
 	return (
-		<div>
+		<div className="table">
 			{isFetching && <h2>...Fetching</h2>}
 			{isLoading && <h2>...Loading</h2>}
 			{error && <h2>Something went wrong...</h2>}
@@ -136,22 +131,42 @@ const Table = ({ data, error, isLoading, isFetching, isSuccess }) => {
 			{isSuccess && (
 				<>
 					{getFilterInputs()}
-					{isMobile && mobileView(items)}
 
-					{!isMobile && desktopView(items)}
+					{data?.length > 0 && (
+						<div id="table">
+							<p>{`Results on this page: ${data.length}`}</p>
+						</div>
+					)}
+
+					{isMobile && mobileView(data)}
+
+					{!isMobile && desktopView(data)}
 				</>
 			)}
 
 			{!error && (
-				<>
-					<button onClick={(e) => handleButtonClick('previous', e)}>
+				<div className="table__buttons">
+					<Button
+						disabled={
+							data?.length < 15 && currentPage === 1
+								? true
+								: false
+						}
+						click={() => handleButtonClick('previous')}
+						className="btn-basic"
+					>
 						Previous
-					</button>
+					</Button>
 
-					<button onClick={(e) => handleButtonClick('next', e)}>
+					<Button
+						disabled={data?.length < 15 ? true : false}
+						click={() => handleButtonClick('next')}
+						className="btn-basic"
+						url="#table"
+					>
 						Next
-					</button>
-				</>
+					</Button>
+				</div>
 			)}
 		</div>
 	);

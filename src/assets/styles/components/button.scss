@@ -8,6 +8,8 @@ $cl__blue--light: #c7ebff;
 
 .button {
 	display: inline-block;
+	max-width: 25rem;
+	min-width: 17rem;
 	padding: 0.75em 1.5em;
 	color: black;
 	font-size: 1.5em;
@@ -155,5 +157,10 @@ $cl__blue--light: #c7ebff;
 				opacity: 1;
 			}
 		}
+	}
+
+	&.disabled {
+		background-color: rgba($cl__blue--light, 0.3);
+		pointer-events: none;
 	}
 }
