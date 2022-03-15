@@ -17,12 +17,12 @@ const SearchInput = () => {
 		if (searchOpen) {
 			setTimeout(() => {
 				setSearchStatus('open');
-			}, 450);
+			}, 150);
 			setSearchStatus('opening');
 		} else {
 			setTimeout(() => {
 				setSearchStatus('closed');
-			}, 450);
+			}, 150);
 			setSearchStatus('closing');
 		}
 	}, [searchOpen]);
@@ -54,7 +54,7 @@ const SearchInput = () => {
 
 			<div className="search__container">
 				<label>
-					Brewery Search
+					<h3>Brewery Search</h3>
 					<input
 						autoComplete="on"
 						type="text"

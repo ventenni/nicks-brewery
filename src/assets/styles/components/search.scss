@@ -4,33 +4,36 @@
 	top: 0;
 	right: 0;
 	bottom: 0;
-	left: 0;
+	left: 100%;
 	width: 100vw;
 	height: 100vh;
 	background: $cl__white;
 	z-index: 9999;
 	overflow-x: hidden;
+	transition: all 150ms linear;
 
-	&--closed {
-		display: none;
-		left: 100%;
-		width: 0;
+	@include min-screen($min-breakpoint-xl) {
+		width: 40vw;
 	}
 
 	&--closing {
 		display: block;
-		animation: slideOut 0.3s ease;
+		// animation: slideOut 0.3s ease;
 	}
 
 	&--opening {
 		display: block;
-		animation: slideIn 0.3s ease;
+		// animation: slideIn 0.3s ease;
 	}
 
 	&--open {
 		display: block;
-		left: 0;
+		left: 60%;
 		width: 100vw;
+
+		@include min-screen($min-breakpoint-xl) {
+			width: 40vw;
+		}
 	}
 
 	label {
@@ -109,14 +112,14 @@
 	}
 
 	&__container {
-		input {
-			margin-top: 3rem;
+		h3 {
+			margin-top: 0;
 		}
 
 		.search-results {
 			width: 100%;
 			margin-top: 2rem;
-			border-top: 1px solid $cl__grey;
+			border-top: 1px solid $cl__border-colour;
 
 			@include min-screen($min-breakpoint-lg) {
 				width: 70%;

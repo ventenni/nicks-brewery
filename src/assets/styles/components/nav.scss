@@ -2,13 +2,13 @@
 	display: flex;
 	justify-content: space-between;
 	padding: 1rem 3rem;
-	border-bottom: 1px solid rgba($cl__black, 0.5);
 
 	&__links {
 		.navbar-brand {
 			color: $cl__black;
 			font-size: 4rem;
 			text-decoration: none;
+			font-family: 'Fredoka', sans-serif;
 		}
 	}
 

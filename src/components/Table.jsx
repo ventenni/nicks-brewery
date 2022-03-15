@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 
 // Components
 import Button from './Button';
@@ -16,6 +16,7 @@ import TableRow from './TableRow';
 const Table = ({ data, error, isLoading, isFetching, isSuccess }) => {
 	const [cityFilter, setCityFilter] = useState('');
 	const [breweryNameFilter, setBreweryNameFilter] = useState('');
+
 	const dispatch = useDispatch();
 	const isMobile = useSelector((state) => state.brewery.isMobile);
 	const currentPage = useSelector((state) => state.brewery.currentPage);
@@ -46,24 +47,27 @@ const Table = ({ data, error, isLoading, isFetching, isSuccess }) => {
 						<th>Type</th>
 						<th>City</th>
 						<th>Country</th>
-						<th>Url</th>
+						<th>Website</th>
 						<th>Phone</th>
 					</tr>
 				</thead>
 
 				<tbody>
-					{items.map((brewery) => (
-						<TableRow
-							key={brewery.id}
-							id={brewery.id}
-							name={brewery.name}
-							type={brewery.brewery_type}
-							city={brewery.city}
-							country={brewery.country}
-							phone={brewery.phone}
-							url={brewery.website_url}
-						/>
-					))}
+					{isLoading && <h2>...Loading</h2>}
+
+					{isSuccess &&
+						items.map((brewery) => (
+							<TableRow
+								key={brewery.id}
+								id={brewery.id}
+								name={brewery.name}
+								type={brewery.brewery_type}
+								city={brewery.city}
+								country={brewery.country}
+								phone={brewery.phone}
+								url={brewery.website_url}
+							/>
+						))}
 				</tbody>
 			</table>
 		);
@@ -124,25 +128,19 @@ const Table = ({ data, error, isLoading, isFetching, isSuccess }) => {
 
 	return (
 		<div className="table">
-			{isFetching && <h2>...Fetching</h2>}
-			{isLoading && <h2>...Loading</h2>}
 			{error && <h2>Something went wrong...</h2>}
 
-			{isSuccess && (
-				<>
-					{getFilterInputs()}
+			{getFilterInputs()}
 
-					{data?.length > 0 && (
-						<div id="table">
-							<p>{`Results on this page: ${data.length}`}</p>
-						</div>
-					)}
-
-					{isMobile && mobileView(data)}
-
-					{!isMobile && desktopView(data)}
-				</>
+			{data?.length > 0 && (
+				<div id="table">
+					<p>{`Results on this page: ${data.length}`}</p>
+				</div>
 			)}
+
+			{isMobile && mobileView(data)}
+
+			{!isMobile && desktopView(data)}
 
 			{!error && (
 				<div className="table__buttons">
@@ -162,7 +160,6 @@ const Table = ({ data, error, isLoading, isFetching, isSuccess }) => {
 						disabled={data?.length < 15 ? true : false}
 						click={() => handleButtonClick('next')}
 						className="btn-basic"
-						url="#table"
 					>
 						Next
 					</Button>

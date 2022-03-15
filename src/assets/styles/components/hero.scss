@@ -41,8 +41,13 @@
 		&__container {
 			width: 100%;
 			padding: 0 3rem;
+
 			@include min-screen($min-breakpoint-lg) {
 				width: 66.66%;
+			}
+
+			h1 {
+				color: $cl__white;
 			}
 		}
 	}

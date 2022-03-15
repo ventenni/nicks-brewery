@@ -1,8 +1,11 @@
 .table {
+	width: 80%;
+	margin: 0 auto;
+
 	@include max-screen($max-breakpoint-lg) {
 		width: 100%;
-		border-top: 1px solid $cl__black;
-		border-bottom: 1px solid $cl__black;
+		border-top: 1px solid $cl__border-colour;
+		border-bottom: 1px solid $cl__border-colour;
 	}
 
 	#table {
@@ -33,6 +36,8 @@
 	}
 
 	.desktop-table {
+		min-height: 60rem;
+		margin: 0 auto;
 		border-collapse: collapse;
 
 		thead {
@@ -55,6 +60,10 @@
 				font-size: 1.25em;
 				text-align: left;
 				text-transform: capitalize;
+
+				a {
+					text-transform: none;
+				}
 			}
 		}
 	}
