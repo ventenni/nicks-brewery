@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 
 const TableRowMobile = ({ id, name, type, city, country, phone, url }) => {
 	return (
-		<div>
+		<div className="table-mobile">
 			<div>
 				<Link to={`/breweryDetails/${id}`}>
 					<h2>{name}</h2>

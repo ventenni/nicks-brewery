@@ -1,7 +1,6 @@
 import React from 'react';
 
 // components
-import SearchInput from './../components/SearchInput';
 import Section from './../layout/Section';
 import Table from './../components/Table';
 
@@ -20,8 +19,6 @@ const Home = () => {
 
 	return (
 		<div>
-			<h1>Home</h1>
-
 			<Section>
 				<Table
 					data={data}

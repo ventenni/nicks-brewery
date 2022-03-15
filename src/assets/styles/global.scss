@@ -1,8 +1,9 @@
 @import './config/variables.scss';
 @import './config/mixins.scss';
 
-@import './base/typography.scss';
+@import './base/forms.scss';
 @import './base/structure.scss';
+@import './base/typography.scss';
 
 @import './components/button.scss';
 @import './components/footer.scss';
@@ -13,3 +14,4 @@
 @import './components/nav.scss';
 @import './components/search.scss';
 @import './components/square-image.scss';
+@import './components/table.scss';
