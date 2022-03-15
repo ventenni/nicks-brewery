@@ -21,7 +21,7 @@ import Nav from './components/Nav';
 function App() {
 	const dispatch = useDispatch();
 	function HandleMobileChange() {
-		let mobile = useCheckMobile(768);
+		let mobile = useCheckMobile(992);
 		dispatch(setMobile({ isMobile: mobile }));
 	}
 

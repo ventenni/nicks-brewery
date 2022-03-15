@@ -113,6 +113,11 @@
 			margin-top: 2rem;
 			border-top: 1px solid $cl__grey;
 
+			@include min-screen($min-breakpoint-lg) {
+				width: 70%;
+				margin: 0 auto;
+			}
+
 			.search-result-item {
 				text-decoration: none;
 				color: $cl__black;

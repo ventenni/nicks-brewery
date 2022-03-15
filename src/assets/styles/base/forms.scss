@@ -7,4 +7,13 @@ input {
 	margin: 2rem auto;
 	padding: 0.75rem;
 	font-size: 1.25em;
+
+	@include max-screen($max-breakpoint-lg) {
+		display: block;
+	}
+
+	@include min-screen($min-breakpoint-lg) {
+		max-width: 20rem;
+		margin: 0 0 0 1rem;
+	}
 }

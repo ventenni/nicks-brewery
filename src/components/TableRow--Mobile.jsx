@@ -5,29 +5,28 @@ import { Link } from 'react-router-dom';
 
 const TableRowMobile = ({ id, name, type, city, country, phone, url }) => {
 	return (
-		<div className="table-mobile">
-			<div>
+		<div className="table-mobile-card" id="table">
+			<div className="table-mobile-card__heading">
 				<Link to={`/breweryDetails/${id}`}>
-					<h2>{name}</h2>
+					<h4>{name}</h4>
 				</Link>
 			</div>
-			<p>{type}</p>
 
-			<div>
-				<p>
-					{city} {country}
+			<div className="table-mobile-card__body">
+				<p className="table-mobile-card__body__type">{type} Brewery</p>
+
+				<p className="table-mobile-card__body__location">{`${city}, ${country}`}</p>
+
+				<p className="table-mobile-card__body__phone">
+					Phone: <a href={`tel:${{ phone }}`}>{phone}</a>
 				</p>
-			</div>
 
-			<div>
-				<a href={`tel:${{ phone }}`}>{phone}</a>
+				{url && (
+					<p className="table-mobile-card__body__website">
+						Website: <a href={url}>{url}</a>
+					</p>
+				)}
 			</div>
-
-			{url && (
-				<div>
-					<a href={url}>{url}</a>
-				</div>
-			)}
 		</div>
 	);
 };

@@ -1,6 +1,7 @@
 import React from 'react';
 
 // components
+import Hero from './../components/Hero';
 import Section from './../layout/Section';
 import Table from './../components/Table';
 
@@ -19,6 +20,11 @@ const Home = () => {
 
 	return (
 		<div>
+			<Hero
+				heading="Nick's Brewery"
+				image="https://images.unsplash.com/photo-1559526642-c3f001ea68ee?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2148&q=80"
+			/>
+
 			<Section>
 				<Table
 					data={data}
