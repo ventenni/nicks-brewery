@@ -1,7 +1,9 @@
-const Iframe = ({ iframeUrl }) => {
+// Simple iframe component that takes a url and title
+// to be easily reused.
+const Iframe = ({ iframeUrl, iframeTitle }) => {
 	return (
 		<iframe
-			title="Brewery Location"
+			title={iframeTitle}
 			src={iframeUrl}
 			width="100%"
 			height="auto"

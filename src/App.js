@@ -4,7 +4,7 @@ import { useEffect } from 'react';
 import useCheckMobile from './hooks/useCheckMobile';
 
 // react-router
-import { Routes, Route, Link } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 
 // Routes
 import BreweryDetails from './routes/BreweryDetails';
@@ -15,11 +15,11 @@ import { useDispatch } from 'react-redux';
 import { setMobile } from './slices/brewerySlice';
 
 // Components
-import Footer from './components/Footer';
 import Nav from './components/Nav';
 
 function App() {
 	const dispatch = useDispatch();
+
 	function HandleMobileChange() {
 		let mobile = useCheckMobile(992);
 		dispatch(setMobile({ isMobile: mobile }));
@@ -31,6 +31,7 @@ function App() {
 
 		return () => window.removeEventListener('resize', HandleMobileChange);
 	});
+
 	return (
 		<div className="App">
 			<Nav />
@@ -42,10 +43,6 @@ function App() {
 					element={<BreweryDetails />}
 				/>
 			</Routes>
-
-			<Footer>
-				<a href="www.github.com">Github</a>
-			</Footer>
 		</div>
 	);
 }

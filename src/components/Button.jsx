@@ -1,3 +1,4 @@
+// Custom button component that can be take functions as props
 const Button = ({
 	children,
 	rounded = false,

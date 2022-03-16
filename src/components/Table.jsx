@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useState } from 'react';
 
 // Components
 import Button from './Button';
@@ -13,6 +13,10 @@ import {
 import { useDispatch, useSelector } from 'react-redux';
 import TableRow from './TableRow';
 
+// Table component that displays all breweries in the database.
+// The table displays 15 results at and time and users can increment
+// and decrement the page number to view more.
+// Users can also filter results based on city and brewery name
 const Table = ({ data, error, isLoading, isFetching, isSuccess }) => {
 	const [cityFilter, setCityFilter] = useState('');
 	const [breweryNameFilter, setBreweryNameFilter] = useState('');
