@@ -3,6 +3,8 @@ import React from 'react';
 // react router
 import { Link } from 'react-router-dom';
 
+// Mobile version of the table row.
+// Used in the Table component
 const TableRowMobile = ({ id, name, type, city, country, phone, url }) => {
 	return (
 		<div className="table-mobile-card" id="table">

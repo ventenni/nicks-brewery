@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 // Redux
 import { useSelector, useDispatch } from 'react-redux';
@@ -8,13 +8,12 @@ import { setSearchOpen } from './../slices/brewerySlice';
 import { Link } from 'react-router-dom';
 
 // Components
-import Search from './SearchInput';
+import Search from './Search';
 
 import { ReactComponent as SearchIcon } from './../assets/icons/search.svg';
 
 const Nav = () => {
 	const dispatch = useDispatch();
-	// const [searchOpen, setSearchOpen] = useState(false);
 
 	function toggleSearch(searchOpen) {
 		dispatch(setSearchOpen({ searchOpen }));
@@ -31,6 +30,7 @@ const Nav = () => {
 			</div>
 
 			<div className="navbar__search">
+				{/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
 				<a
 					href="#"
 					onClick={() => toggleSearch(true)}

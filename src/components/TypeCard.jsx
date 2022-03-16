@@ -1,6 +1,8 @@
 import { ReactComponent as BeerIcon } from './../assets/icons/beer.svg';
 import Button from './Button';
 
+// Simple card component that displays the address of the selected brewery.
+// Used in the Info Cards component
 const TypeCard = ({ type, url }) => {
 	return (
 		<div className="type-card card">

@@ -3,6 +3,8 @@ import React from 'react';
 // react router
 import { Link } from 'react-router-dom';
 
+// Desktop version of the table row.
+// Used in the Table component
 const TableRow = ({ id, name, type, city, country, url, phone }) => {
 	return (
 		<tr className="table-row">

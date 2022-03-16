@@ -14,21 +14,25 @@ export const brewerySlice = createSlice({
 	name: 'breweries',
 	initialState,
 	reducers: {
+		// Used for the table on the home page.
+		// The table component has some code to ensure that a user cannot increment beyond
+		// the returned results.
 		nextPage: (state) => {
-			// Redux Toolkit allows us to write "mutating" logic in reducers. It
-			// doesn't actually mutate the state because it uses the Immer library,
-			// which detects changes to a "draft state" and produces a brand new
-			// immutable state based off those changes
+			//
 			state.currentPage += 1;
 		},
+		// Used for the table on the home page.
+		// A simple check to ensure that a user cannot go below 1 as it would cause issues
+		// with the API call
 		previousPage: (state) => {
 			if (state.currentPage > 1) {
 				state.currentPage -= 1;
 			}
 		},
-		saveSearchResults: (state, action) => {
-			state.searchResults = action.payload.data;
-		},
+
+		// Used to keep the search results available in the search component.
+		// Handy for someone who is looking for a specific brewery and doesn't
+		// have to repeatedly enter the search query.
 		saveSearchQuery: (state, action) => {
 			state.searchQuery = action.payload.searchQuery;
 			console.log(
@@ -36,19 +40,22 @@ export const brewerySlice = createSlice({
 			);
 		},
 
-		saveBreweriesFromSearchResults: (state, action) => {
-			state.searchResults = action.payload.searchResults;
-		},
-
+		// Used by components to render certain views/components for a better
+		// experience.
 		setMobile: (state, action) => {
 			console.log(action.payload.isMobile);
 			state.isMobile = action.payload.isMobile;
 		},
 
+		// Used to keep track of the search status.
+		// The component is opened and closed from 2 different components. This ensures
+		// that there is no needless props drilling.
 		setSearchOpen: (state, action) => {
-			console.log('setsearch open');
 			state.searchOpen = action.payload.searchOpen;
 		},
+
+		// Used by the table component.
+		// Keeps track of the filter queries a user searches for.
 		setFilterVariables: (state, action) => {
 			state.cityName = action.payload.city;
 			state.breweryName = action.payload.brewery;
@@ -61,9 +68,7 @@ export const {
 	increment,
 	decrement,
 	incrementByAmount,
-	saveBreweriesFromSearchResults,
 	saveSearchQuery,
-	saveSearchResults,
 	nextPage,
 	previousPage,
 	setMobile,

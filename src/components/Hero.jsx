@@ -1,5 +1,6 @@
 import React from 'react';
 
+// Hero image that takes an image url and heading
 const Hero = ({ image, heading }) => {
 	return (
 		<div className="hero-image">

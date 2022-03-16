@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { setSearchOpen } from '../slices/brewerySlice';
 
+// Simple component that displays a search result.
+// Used in the SearchResults component
 const SearchResultItem = ({ name, id }) => {
 	const dispatch = useDispatch();
 

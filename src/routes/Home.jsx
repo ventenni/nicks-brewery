@@ -13,6 +13,7 @@ const Home = () => {
 	const currentPage = useSelector((state) => state.brewery.currentPage);
 	const cityName = useSelector((state) => state.brewery.cityName);
 	const breweryName = useSelector((state) => state.brewery.breweryName);
+
 	// Get list of breweries on page load
 	// Uses getBreweriesWithAutoComplete endpoint in brewery.js
 	const { data, error, isLoading, isFetching, isSuccess } =

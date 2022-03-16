@@ -6,6 +6,8 @@ import SearchResultItem from './SearchResults--Item';
 // redux
 import { useGetBreweriesWithAutoCompleteQuery } from './../services/brewery';
 
+// Container component for the search results items.
+// Handles the call to the api endpoint.
 const SearchResults = ({ searchQuery }) => {
 	// Get list of breweries using the search query
 	// Uses getBreweriesWithAutoComplete endpoint in brewery.js
@@ -16,10 +18,12 @@ const SearchResults = ({ searchQuery }) => {
 
 	return (
 		<div className="search-results">
-			{/* {data?.length === 0 && ''} */}
 			{isLoading && <h3>...Loading</h3>}
+
 			{isFetching && <h3>...Fetching</h3>}
+
 			{error && <h3>{error}</h3>}
+
 			{isSuccess &&
 				data.map((item) => {
 					return (
