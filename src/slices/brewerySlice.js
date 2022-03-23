@@ -8,6 +8,7 @@ const initialState = {
 	searchOpen: false,
 	searchQuery: '',
 	searchResults: [],
+	tableResults: [],
 };
 
 export const brewerySlice = createSlice({
@@ -60,6 +61,12 @@ export const brewerySlice = createSlice({
 			state.cityName = action.payload.city;
 			state.breweryName = action.payload.brewery;
 		},
+
+		// Used in home page component
+		// Save results of paginated table in state
+		saveTableResults: (state, action) => {
+			state.tableResults = action.payload.tableResults;
+		},
 	},
 });
 
@@ -71,6 +78,7 @@ export const {
 	saveSearchQuery,
 	nextPage,
 	previousPage,
+	saveTableResults,
 	setMobile,
 	setFilterVariables,
 	setSearchOpen,

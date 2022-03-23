@@ -142,9 +142,9 @@ const Table = ({ data, error, isLoading, isFetching, isSuccess }) => {
 				</div>
 			)}
 
-			{isMobile && mobileView(data)}
+			{data && isMobile && mobileView(data)}
 
-			{!isMobile && desktopView(data)}
+			{data && !isMobile && desktopView(data)}
 
 			{!error && (
 				<div className="table__buttons">
