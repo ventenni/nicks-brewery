@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 // components
 import Hero from './../components/Hero';
@@ -6,18 +6,25 @@ import Section from './../layout/Section';
 import Table from './../components/Table';
 
 // redux
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { saveTableResults } from './../slices/brewerySlice';
 import { useGetBreweriesQuery } from '../services/brewery';
 
 const Home = () => {
 	const currentPage = useSelector((state) => state.brewery.currentPage);
 	const cityName = useSelector((state) => state.brewery.cityName);
 	const breweryName = useSelector((state) => state.brewery.breweryName);
+	const tableResults = useSelector((state) => state.brewery.tableResults);
+	const dispatch = useDispatch();
 
 	// Get list of breweries on page load
 	// Uses getBreweriesWithAutoComplete endpoint in brewery.js
 	const { data, error, isLoading, isFetching, isSuccess } =
 		useGetBreweriesQuery({ currentPage, cityName, breweryName });
+
+	useEffect(() => {
+		dispatch(saveTableResults({ tableResults: data }));
+	}, [data]);
 
 	return (
 		<div>
@@ -28,7 +35,7 @@ const Home = () => {
 
 			<Section>
 				<Table
-					data={data}
+					data={tableResults}
 					error={error}
 					isFetching={isFetching}
 					isLoading={isLoading}
